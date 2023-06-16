@@ -1,0 +1,23 @@
+version: '3'
+services:
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - write
+      - read
+  write:
+    build:
+      context: ./write
+      dockerfile: Dockerfile
+    ports:
+      - 3002:3002
+  read:
+    build:
+      context: ./read
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
